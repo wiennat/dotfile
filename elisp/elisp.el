@@ -1,0 +1,37 @@
+(require 'color-theme)
+(defun color-theme-sunburst ()
+  (interactive)
+  (color-theme-install
+   '(color-theme-sunburst
+     ((background-color . "#000000")
+      (foreground-color . "#FFFFFF")
+      (cursor-color . "#DAD085"))
+      (default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#FFFFFF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 89 :width normal))))
+     (mode-line ((t ( :foreground "#FFFFFF" :background "DarkRed" :box (:line-width 1 :style released-button)))))
+     (font-lock-builtin-face ((t (:foreground "#3E87E3"))))
+     (font-lock-comment-face ((t (:italic t :foreground "#AEAEAE"))))
+     (font-lock-constant-face ((t (:foreground "#3387CC"))))
+     (font-lock-doc-string-face ((t (:foreground "#65B042"))))
+     (font-lock-string-face ((t (:foreground "#99CF50"))))
+     (font-lock-function-name-face ((t (:foreground "#89BDFF"))))
+     (font-lock-keyword-face ((t (:foreground "#E28964"))))
+     (font-lock-type-face ((t (:underline t :foreground "#89BDFF"))))
+     (font-lock-variable-name-face ((t (:foreground "#3E87E3"))))
+     (font-lock-warning-face ((t (:bold t :foreground "#FD5FF1"
+                                        :background "#562D56"))))
+     (py-decorators-face ((t (:foreground "#3387CC"))))
+     (py-builtins-face ((t (:foreground "#99CF50"))))
+     (py-pseudo-keyword-face ((t (:foreground "#3E87E3"))))
+     )
+   )
+)
+(defun dos2unix ()
+  "Convert this entire buffer from MS-DOS text file format to UNIX."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (replace-regexp "\r$" "" nil)
+    (goto-char (1- (point-max)))
+    (if (looking-at "\C-z")
+        (delete-char 1))))
+
